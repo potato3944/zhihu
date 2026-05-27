@@ -3,6 +3,7 @@ module zhihu
 go 1.25.3
 
 require (
+	github.com/dgrijalva/jwt-go v3.2.0+incompatible
 	github.com/zeromicro/go-zero v1.10.1
 	go.etcd.io/etcd/client/v3 v3.5.21
 	google.golang.org/grpc v1.79.3
