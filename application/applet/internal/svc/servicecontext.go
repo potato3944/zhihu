@@ -8,6 +8,7 @@ import (
 	"zhihu/application/user/rpc/user"
 
 	"github.com/zeromicro/go-zero/core/stores/redis"
+	"github.com/zeromicro/go-zero/zrpc"
 )
 
 type ServiceContext struct {
@@ -17,8 +18,10 @@ type ServiceContext struct {
 }
 
 func NewServiceContext(c config.Config) *ServiceContext {
+	userCli:= zrpc.MustNewClient(c.UserRPC)
 	return &ServiceContext{
 		Config:   c,
+		UserRPC:  user.NewUser(userCli),
 		BizRedis: redis.New(c.BizRedis.Host, redis.WithPass(c.BizRedis.Pass)),
 	}
 }
